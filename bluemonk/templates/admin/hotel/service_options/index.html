@@ -1,0 +1,8 @@
+{% extends "admin/hotel/layout.html" %}
+{% import 'elements/paginator.html' as paginationHelper %}
+{% block title %}{{ hotel.name }} - Service Options{% endblock %}
+{% block body %}
+<a href="{{ url_for('.service_options_add', hotel_id=hotel_id) }}">Create a new service option.</a>
+    {% include "partials/service_options/index.html" %}
+{{ paginationHelper.render_pagination(paginator) }}
+{% endblock %}

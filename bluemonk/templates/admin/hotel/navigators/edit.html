@@ -1,0 +1,5 @@
+{% extends "admin/hotel/layout.html" %}
+{% block title %}{{ hotel.shorthand }} - Editing Navigator {{ navigator['Navigator']['id'] }}{% endblock %}
+{% block body %}
+    {% include "partials/navigators/edit.html" %}
+{% endblock %}

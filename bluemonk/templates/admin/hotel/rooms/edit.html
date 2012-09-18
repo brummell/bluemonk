@@ -1,0 +1,6 @@
+{% extends "admin/hotel/layout.html" %}
+{% block title %}{{ hotel.name }} - Editing Room {{ room['Room']['room_number'] }}{% endblock %}
+{% block body %}
+{% include "partials/rooms/edit.html" %}
+{% endblock %}
+

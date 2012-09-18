@@ -1,0 +1,23 @@
+<h2>Service Options</h2>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Service Group</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Active</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for so in serviceOptions %}
+        <tr>
+            <td><a href="{{ url_for('.service_groups_view', hotel_id=hotel_id, service_group_id=so['ServiceOption']['service_group_id']) }}">{{ serviceGroups[so['ServiceOption']['service_group_id']] }}</a></td>
+            <td><a href="{{ url_for('.service_options_view', hotel_id=hotel_id, service_option_id=so['ServiceOption']['id']) }}">{{ so['ServiceOption']['name'] }}</a></td>
+            <td>{{ so['ServiceOption']['price'] }}</td>
+            <td>{{ so['ServiceOption']['active'] | bool_to_badge }}</td>
+            <td><a href="{{ url_for('.service_options_edit', hotel_id=hotel_id, service_option_id=so['ServiceOption']['id']) }}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

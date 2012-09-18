@@ -1,0 +1,21 @@
+<h2>Printer Configurations</h2>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Configuration Name</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for config in printerConfigurations %}
+        <tr>
+            <td>{{ config['PrinterConfiguration']['name'] }}</td>
+            <td>{{ config['PrinterConfiguration']['configuration']}}</td>
+            <td>{{ config['PrinterConfiguration']['description'] }}</td>
+            <td><a href="{{ url_for('.printer_configurations_edit', hotel_id=hotel_id, printer_configuration_id=config['PrinterConfiguration']['id']) }}">Edit</a> Delete</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

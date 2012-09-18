@@ -1,0 +1,10 @@
+{% extends "admin/hotel/layout.html" %}
+{% block title %}{{ hotel.name }} - Printer -  {% endblock %}
+{% block body %}
+{% if printer['printer-state-label'] == "STOPPED" %}
+  <a class="btn" href="{{ url_for('.printer_enable', hotel_id=hotel_id, printer_id=printer_id) }}">Enable Printer</a>
+{% elif printer['printer-state-label'] == "IDLE" %}
+  <a class="btn" href="{{ url_for('.printer_disable', hotel_id=hotel_id, printer_id=printer_id) }}">Disable Printer</a>
+{% endif %}
+  <a class="btn" href="{{ url_for('.printer_cancel_print_jobs', hotel_id=hotel_id, printer_id=printer_id) }}">Cancel all jobs on this printer</a>
+{% endblock %}

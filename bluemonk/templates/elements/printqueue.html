@@ -1,0 +1,11 @@
+{% macro actions(form) %}
+<form method="POST" action="{{ url_for('.stays_printqueue_actions', hotel_id=form.hotel_id.data, stay_id=form.stay_id.data, item_id=form.id.data) | escape }}">
+    {{ form.csrf_token }}
+    {{ form.id }}
+    {{ form.stay_id }}
+    {{ form.hotel_id }}
+    <ul>
+        <li>{{ form.print_item }}</li>
+    </ul>
+</form>
+{% endmacro %}

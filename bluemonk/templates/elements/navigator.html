@@ -1,0 +1,72 @@
+{% macro display(hotel_id, navigator) %}
+<h3><a href="{{ url_for('.navigators_view', hotel_id=hotel_id, navigator_id=navigator['id']) }}">Navigator</a></h3>
+<dl>
+    <dt>Asset Tag</dt>
+    <dd>{{ navigator['id'] }}</dd>
+    <dt>IP Address</dt>
+    <dd>{{ navigator['ip_address'] }}</dd>
+    <dt>Billing Enabled</dt>
+    <dd>{{ navigator['billing_enabled'] | bool_to_badge }}</dd>
+    <dt>Boot Authorized</dt>
+    <dd>{{ navigator['authorized_boot'] | bool_to_badge }}</dd>
+    <dt>Last Boot</dt>
+    <dd>{{ navigator['last_boot'] }}</dd>
+</dl>
+{% endmacro %}
+
+{% macro controls(hotel_id, form) %}
+<form class="form" method="POST" action="{{ url_for('.ajax_navigators_controls', hotel_id=hotel_id, navigator_id=form.id.data) }}">
+    {{ form.csrf_token }}
+    {{ form.id }}
+    <ul class="unstyled">
+        <li>{{ form.reboot(class="btn btn-warning form-nav-controls") }}</li>
+        <li>{{ form.authorize(class="btn form-nav-controls") }}</li>
+        <li>{{ form.ping(class="btn btn-info form-nav-controls") }}</li>
+    </ul>
+</form>
+<script type="text/javascript">
+    $('.form-nav-controls').click(function() {
+            var form = $(this).closest('form');
+            var formData = $(form).serializeArray();
+            var action = $(form).attr('action');
+            var data = null;
+
+            formData.push({ name: $(this).attr('name'), value: $(this).val() });
+
+            $.post(action, formData,
+                function(data) {
+                    if (data.successful) {
+                        alert('Success!');
+                    } else {
+                        alert('Failure!');
+                    }
+                }
+            ).error(function(){
+                alert('Failure!');
+            });
+            return false;
+    });
+</script>
+{% endmacro %}
+
+{% macro room_move(hotel_id, form) %}
+
+{% import 'elements/form_errors.html' as formErrors %}
+<form method="POST" action="{{ url_for('.navigators_room_move', hotel_id=hotel_id, navigator_id=form.navigator_id.data) }}">
+    <fieldset>
+        <legend>Room Move</legend>
+        {{ formErrors.display(form) }}
+        {{ form.csrf_token }}
+        {{ form.navigator_id }}
+        <div class="control-group">
+            {{ form.room_number.label(class='control-label') }}
+            <div class="controls">
+                {{ form.room_number }}
+            </div>
+        </div>
+        <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+    </fieldset>
+</form>
+{% endmacro %}

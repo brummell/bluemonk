@@ -1,0 +1,29 @@
+{% import 'elements/form_errors.html' as formErrors %}
+<div class="span4">
+    <form class="form-horizontal" method="POST" action="{{ url_for('.stays_by_room_number', hotel_id=hotel_id) }}">
+        <fieldset>
+            <legend>Room Search</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                <div class="control-group">
+                    {{ form.room_number.label(class='control-label') }}
+                    <div class="controls">
+                        {{ form.room_number }}
+                    </div>
+                </div>
+                <div class="control-group">
+                    {{ form.active.label(class='control-label') }}
+                    <div class="controls">
+                         {{ form.active }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-actions">
+                <p>Searching {{ stays_count }} stays</p>
+                <button class="btn btn-primary" type="submit">Search</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+

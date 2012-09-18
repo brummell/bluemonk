@@ -1,0 +1,5 @@
+{% extends "admin/hotel/layout.html" %}
+{% block title %}{{ hotel.shorthand }} - {{ stay['Room']['room_number'] }} - Purchases{% endblock %}
+{% block body %}
+    {% include "partials/stays/purchases.html" %}
+{% endblock %}

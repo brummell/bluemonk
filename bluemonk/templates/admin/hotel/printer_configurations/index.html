@@ -1,0 +1,10 @@
+{% extends "admin/hotel/layout.html" %}
+{% block title %}{{ hotel.name }} - Printer Configurations{% endblock %}
+{% block body %}
+<h1>Printer Configurations</h1>
+<p>Printer configurations are provided to navigators allowing them to use specific printers.</p>
+<p>They do not necessarily map to physical printers.</p>
+<a href="{{ url_for('.printer_configurations_add', hotel_id=hotel.id) }}">Create a new configuration</a>.
+{% include "partials/printer_configurations/index.html" %}
+{% endblock %}
+

@@ -1,0 +1,20 @@
+<h2>Service Purchase</h2>
+<div class="well span4">
+    <ul class="unstyled">
+        <li>View Service Option details</li>
+        <li>View Service Group details</li>
+        <li><a href="{{ url_for('.stays_view', hotel_id=hotel_id, stay_id=servicePurchase['Stay'][0]['id']) }}">View Stay details</a></li>
+    </ul>
+</div>
+<div class="span4">
+    <pre>{{ servicePurchase['ServicePurchase'] }}</pre>
+</div>
+<div class="span4">
+<pre>{{ servicePurchase['ServiceOption'] }}</pre>
+</div>
+<div class="span4">
+<pre>{{ servicePurchase['PassportAccount'] }}</pre>
+</div>
+<div class="span4">
+<pre>{{ servicePurchase['Stay'] }}</pre>
+</div>

@@ -1,0 +1,31 @@
+{% import 'elements/navigator.html' as navigatorElement %}
+{% import 'elements/stay.html' as stayElement %}
+{% import 'elements/passport_account.html' as passportAccountElement %}
+{% import 'elements/guest.html' as guestElement %}
+{% import 'elements/room.html' as roomElement %}
+<h2>Stays - Details for room number {{ stay['Room']['room_number'] }}</h2>
+<div class="span3">
+    <p>
+        <a class="btn" href="{{ url_for('.stays_purchases', hotel_id=hotel_id, stay_id=stay['Stay']['id']) }}"><i class="icon-shopping-cart"></i> Purchases</a>
+        <a class="btn" href="{{ url_for('.stays_print_queue', hotel_id=hotel_id, stay_id=stay['Stay']['id']) }}"><i class="icon-print"></i> Print Queue</a>
+    </p>
+</div>
+<div class="span3">
+    {{ guestElement.display(hotel_id, stay['Guest']) }}
+</div>
+<div class="span3">
+    {{ stayElement.display(stay['Stay'], hotel_id) }}
+</div>
+{% if 'PassportAccount' in stay %}
+    <div class="span3">
+        {{ passportAccountElement.display(stay['PassportAccount']) }}
+    </div>
+{% endif %}
+<div class="span3">
+    {{ roomElement.display(hotel_id, stay['Room'], stay['PrinterConfiguration']) }}
+</dl>
+</div>
+<div class="span3">
+    {{ navigatorElement.display(hotel_id, navigator['Navigator']) }}
+    {{ navigatorElement.controls(hotel_id, navigatorControlsForm) }}
+</dl>

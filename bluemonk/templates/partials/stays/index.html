@@ -1,0 +1,32 @@
+<h2>Stays</h2>
+
+<table id="table-stays" class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Check in</th>
+            <th>Room Number</th>
+            <th>Guest Name</th>
+            <th>Welcomed</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stay in stays %}
+        <tr data-url="{{ url_for('.stays_view', hotel_id=hotel_id, stay_id=stay['Stay']['id']) }}">
+            <td>{{ stay['Stay']['pms_ci'] }}</td>
+            <td>{{ stay['Room']['room_number'] }}</td>
+            <td>{{ stay['Guest'] | guest_name }}</td>
+            <td>{{ stay['Stay']['welcomed'] | bool_to_badge }}</td>
+            <td><a href="{{ url_for('.stays_view', hotel_id=hotel_id, stay_id=stay['Stay']['id']) }}">View</a>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script type="text/javascript">
+    $('#table-stays tbody tr').click(function(e){
+        var url = $(this).data('url');
+        if (url === 'undefined') {
+            return;
+        }
+        window.location.href = url;
+    });
+</script>

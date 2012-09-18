@@ -1,0 +1,11 @@
+{% macro display(hotel_id, serviceGroup) %}
+<h3><a href="{{ url_for('.service_groups_view', hotel_id=hotel_id, service_group_id=serviceGroup['id']) }}">Service Group</a></h3>
+<dl>
+    <dt>Name</dt>
+    <dd>{{ serviceGroup['name'] }}</dd>
+    <dt>Description</dt>
+    <dd>{{ serviceGroup['description'] }}</dd>
+    <dt>Active</dt>
+    <dd>{{ serviceGroup['active'] | bool_to_badge }}</dd>
+</dl>
+{% endmacro %}

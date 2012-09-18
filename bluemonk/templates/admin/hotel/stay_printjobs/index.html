@@ -1,0 +1,8 @@
+{% extends "admin/hotel/layout.html" %}
+{% import 'elements/paginator.html' as paginationHelper %}
+{% block title %}{{ hotel.name }} - Printjobs{% endblock %}
+{% block body %}
+{% include "partials/stay_printjobs/index.html" %}
+{{ paginationHelper.render_pagination(paginator) }}
+{% endblock %}
+

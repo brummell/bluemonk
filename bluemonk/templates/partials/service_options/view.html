@@ -1,0 +1,11 @@
+{% import 'elements/service_group.html' as serviceGroupElement %}
+{% import 'elements/service_option.html' as serviceOptionElement %}
+<h2>Service Options</h2>
+<h3>Details for {{ serviceOption['ServiceOption']['name'] }}</h3>
+<div>
+    {{ serviceGroupElement.display(hotel_id, serviceOption['ServiceGroup']) }}
+</div>
+<div>
+    {{ serviceOptionElement.display(hotel_id, serviceOption['ServiceOption']) }}
+</div>
+

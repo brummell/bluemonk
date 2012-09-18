@@ -1,0 +1,21 @@
+{% import 'elements/form_errors.html' as formErrors %}
+<h2>New PMS Group Link</h2>
+<div class="well span4">
+    <form method="POST" action="{{ url_for('.groups_add_pms_group', hotel_id=hotel_id, group_id=group['Group']['id']) }}">
+        <fieldset>
+            <legend>Associating a PMS group to group {{ group['Group']['id'] }}</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                {{ form.pms_group.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.pms_group }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Link</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+

@@ -1,0 +1,5 @@
+{% extends "admin/hotel/layout.html" %}
+{% block title %}{{ hotel.shorthand }} - {{ stay['Room']['room_number'] }}{% endblock %}
+{% block body %}
+    {% include "partials/stays/view.html" %}
+{% endblock %}

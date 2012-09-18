@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+{% block head %}
+    <title>{% block title %}Welcome{% endblock %} | Bluemonk</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}" />
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-dropdown.js') }}"></script>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" />
+    <script type="text/javascript" language="javascript" >
+    $(document).ready(function () {
+          $('.dropdown-toggle').dropdown();
+          });
+    </script>
+{% endblock %}
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <a class="brand" href="/" style="margin-left: 20px;">Bluemonk</a>
+            <div class="nav-collapse">
+                {% block top %}{% endblock %}
+                <ul class="nav">
+                    {% if g.user %}
+                        <li><a href="{{ url_for('authentication.logout') }}">Logout</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-top: 50px;">
+        <div class="row-fluid">
+            <div class="span2">
+                <div class="well" style="padding: 8px 0;">
+                    {%block menu %}{% endblock %}
+                </div>
+            </div>
+            <div class="span10">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul class="unstyled">
+                            {% for category, message in messages %}
+                            <li>
+                                <div class="alert alert-{{ category | escape}}">
+                                    {{ message }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+                {% block body %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

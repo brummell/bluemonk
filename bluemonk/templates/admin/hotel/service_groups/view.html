@@ -1,0 +1,7 @@
+{% extends "admin/hotel/layout.html" %}
+{% block title %}{{ hotel.name }} - Service Groups - {{ serviceGroup['ServiceGroup']['name'] }}{% endblock %}
+{% block body %}
+{% include "partials/service_groups/view.html" %}
+{% endblock %}
+
+

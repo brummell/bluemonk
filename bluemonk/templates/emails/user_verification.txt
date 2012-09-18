@@ -1,0 +1,7 @@
+Welcome to Bluemonk!
+
+Your identity has been registered with bluemonk.
+
+You will need to verify your email address. Once verified, your account will be activated by an administrator.
+
+Visit {{ url_for('authentication.verify_address', _external=True, user_id=user_id, token=verification_token) }} to verify your email address.

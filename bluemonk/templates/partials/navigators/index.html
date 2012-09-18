@@ -1,0 +1,24 @@
+<h2>Navigators</h2>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Asset Tag</th>
+            <th>Billing Enabled</th>
+            <th>Boot Authorized</th>
+            <th>Last Boot</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for navigator in navigators %}
+            <tr>
+                <td>{{ navigator['Navigator']['id'] }}</td>
+                <td>{{ navigator['Navigator']['billing_enabled'] | bool_to_badge }}</td>
+                <td>{{ navigator['Navigator']['authorized_boot'] | bool_to_badge }}</td>
+                <td>{{ navigator['Navigator']['last_boot'] }}</td>
+                <td><a href="{{ url_for('.navigators_view', hotel_id=hotel_id, navigator_id=navigator['Navigator']['id']) }}">View</a></td>
+                <td><a href="{{ url_for('.navigators_edit', hotel_id=hotel_id, navigator_id=navigator['Navigator']['id']) }}">Edit</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

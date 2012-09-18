@@ -1,0 +1,69 @@
+{% import 'elements/form_errors.html' as formErrors %}
+<h2>Service Coupons</h2>
+
+<div class="well span4">
+    <form class="form-horizontal" method="POST" action="{{ url_for('.service_coupons_edit', hotel_id=hotel_id, service_coupon_id=serviceCoupon['ServiceCoupon']['id']) }}">
+        <fieldset>
+            <legend>Editing Service Coupon {{ form.code.data }}</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                {{ form.code.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.code }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.description.label(class='control-label') }}
+                <div class="controls">
+                {{ form.description }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.discount.label(class='control-label') }}
+                <div class="controls">
+                {{ form.discount }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.per_guest_max_uses.label(class='control-label') }}
+                <div class="controls">
+                {{ form.per_guest_max_uses }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.total_max_uses.label(class='control-label') }}
+                <div class="controls">
+                {{ form.total_max_uses }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.active.label(class='control-label') }}
+                <div class="controls">
+                {{ form.active }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.starts.label(class='control-label') }}
+                <div class="controls">
+                {{ form.starts }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.expires.label(class='control-label') }}
+                <div class="controls">
+                {{ form.expires }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.service_group_id.label(class='control-label') }}
+                <div class="controls">
+                {{ form.service_group_id }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Save Changes</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

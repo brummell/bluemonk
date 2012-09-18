@@ -1,0 +1,13 @@
+{% macro display(hotel_id, guest) %}
+<h3><a href="{{ url_for('.guests_view', hotel_id=hotel_id, guest_id=guest['id']) }}">Guest</a></h3>
+<dl>
+    <dt>Name</dt>
+    <dd>{{ guest | guest_name }}</dd>
+    <dt>Display Name</dt>
+    <dd>{{ guest['display_name'] }}</dd>
+    <dt>PMS Guest id</dt>
+    <dd>{{ guest['pms_guest_id'] }}</dd>
+    <dt>Language</dt>
+    <dd>{{ guest['guest_language'] | language_iso_to_name }}</dd>
+</dl>
+{% endmacro %}

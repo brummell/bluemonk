@@ -1,0 +1,74 @@
+{% extends "admin/layout.html" %}
+{% block top %}
+<ul class="nav">
+    <li class="divider-vertical"></li>
+    <li class="navbar-text">{{ hotel.name }}</li>
+    <li class="divider-vertical"></li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Guests
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ url_for('.groups_index', hotel_id=hotel_id) }}">Groups</a></li>
+            <li><a href="{{ url_for('.guests_index', hotel_id=hotel_id) }}">Guests</a></li>
+            <li><a href="{{ url_for('.stays_index', hotel_id=hotel_id) }}">Stays</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Navigators
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ url_for('.navigators_index', hotel_id=hotel_id) }}">Index</a></li>
+            <li><a href="{{ url_for('.navigators_add', hotel_id=hotel_id) }}">Register a new navigator</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Printers
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ url_for('.printer_configurations_index', hotel_id=hotel_id) }}">Configurations</a></li>
+            <li><a href="{{ url_for('.print_jobs_index', hotel_id=hotel_id) }}">Jobs</a></li>
+            <li><a href="{{ url_for('.printers_index', hotel_id=hotel_id) }}">Printers</a></li>
+            <li><a href="{{ url_for('.printers_jobs', hotel_id=hotel.id) }}">Print Jobs Queue</a></li>
+
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Rooms
+            <b class="caret"></b>
+        </a>
+        <ul class='dropdown-menu'>
+            <li><a href="{{ url_for('.rooms_index', hotel_id=hotel_id) }}">Rooms</a></li>
+            <li><a href="{{ url_for('.room_classes_index', hotel_id=hotel_id) }}">Classes</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Services
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ url_for('.service_coupons_index', hotel_id=hotel_id) }}">Coupons</a></li>
+            <li><a href="{{ url_for('.service_groups_index', hotel_id=hotel_id) }}">Groups</a></li>
+            <li><a href="{{ url_for('.service_options_index', hotel_id=hotel_id) }}">Options</a></li>
+            <li><a href="{{ url_for('.service_purchases_index', hotel_id=hotel_id) }}">Purchases</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            Technicians
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="{{ url_for('.technicians_index', hotel_id=hotel_id) }}">Index</a></li>
+            <li><a href="{{ url_for('.technicians_add', hotel_id=hotel_id) }}">Add</a></li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,28 @@
+<h1>Stay - Add Purchase</h1>
+{% import 'elements/form_errors.html' as formErrors %}
+<div class="well span4">
+    <form method="POST" action="{{ url_for('.stays_add_purchase', hotel_id=hotel_id, stay_id=stay['Stay']['id']) }}">
+        <fieldset>
+            <legend>New Purchase</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            {{ form.stay_id }}
+            <div class="control-group">
+                {{ form.service_option_id.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.service_option_id }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.is_credited.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.is_credited }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Create</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+

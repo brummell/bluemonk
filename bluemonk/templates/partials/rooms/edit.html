@@ -1,0 +1,54 @@
+{% import 'elements/form_errors.html' as formErrors %}
+<h2>Room</h2>
+
+<div class="well span4">
+    <form class="form-horizontal" method="POST" action="{{ url_for('.rooms_edit', hotel_id=hotel_id, room_id=room['Room']['id']) }}">
+        <fieldset>
+            <legend>Editing Room {{ room['Room']['room_number'] }}</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                {{ form.room_number.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.room_number }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.floor.label(class='control-label') }}
+                <div class="controls">
+                {{ form.floor }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.printer_configuration_id.label(class='control-label') }}
+                <div class="controls">
+                {{ form.printer_configuration_id }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.room_class_id.label(class='control-label') }}
+                <div class="controls">
+                {{ form.room_class_id }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.voip_user.label(class='control-label') }}
+                <div class="controls">
+                {{ form.voip_user }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.voip_password.label(class='control-label') }}
+                <div class="controls">
+                {{ form.voip_password }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Save Changes</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+
+

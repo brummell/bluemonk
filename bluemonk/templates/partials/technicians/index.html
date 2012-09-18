@@ -1,0 +1,23 @@
+<h2>Technicians</h2>
+<a href="{{ url_for('.technicians_add', hotel_id=hotel_id) }}">Create a new technician account.</a>
+<table id="table-technicians" class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Login</th>
+            <th>Name</th>
+            <th>Active</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in technicians %}
+        <tr data-id="{{ t['Technician']['id'] | escape }}" data-url="{{ url_for('.technicians_edit', hotel_id=hotel_id, technician_id=t['Technician']['id']) | escape}}">
+            <td>{{ t['Technician']['login'] }}</td>
+            <td>{{ t['Technician']['name'] }}</td>
+            <td>{{ t['Technician']['active'] | bool_to_badge }}</td>
+            <td><a href="{{ url_for('.technicians_edit', hotel_id=hotel_id, technician_id=t['Technician']['id']) }}">Edit</a></td>
+            <td><a href="{{ url_for('.technicians_delete', hotel_id=hotel_id, technician_id=t['Technician']['id']) }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

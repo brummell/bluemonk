@@ -1,0 +1,8 @@
+{% extends "admin/hotel/layout.html" %}
+{% import 'elements/paginator.html' as paginationHelper %}
+{% block title %}{{ hotel.name }} - Service Groups{% endblock %}
+{% block body %}
+{% include "partials/service_groups/index.html" %}
+{{ paginationHelper.render_pagination(paginator) }}
+<a href="{{ url_for('.service_groups_add', hotel_id=hotel_id) }}">Create a new service group.</a>
+{% endblock %}

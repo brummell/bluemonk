@@ -1,0 +1,30 @@
+<h2>Service Coupons</h2>
+<table id="table-coupons" class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Service Group</th>
+            <th>Code</th>
+            <th>Description</th>
+            <th>Starts</th>
+            <th>Expires</th>
+            <th>Active</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for coupon in serviceCoupons %}
+        <tr>
+            <td><a href="{{ url_for('.service_groups_view', hotel_id=hotel_id, service_group_id=coupon['ServiceGroup']['id']) }}">{{ coupon['ServiceGroup']['name'] }}</a></td>
+            <td><a href="{{ url_for('.service_coupons_view', hotel_id=hotel_id, service_coupon_id=coupon['ServiceCoupon']['id']) }}">{{ coupon['ServiceCoupon']['code'] }}</a></td>
+            <td>{{ coupon['ServiceCoupon']['description'] }}</td>
+            <td>{{ coupon['ServiceCoupon']['starts'] }}</td>
+            <td>{{ coupon['ServiceCoupon']['expires'] }}</td>
+            <td>{{ coupon['ServiceCoupon']['active'] | bool_to_badge }}</td>
+            <td>
+                <a href="{{ url_for('.service_coupons_view', hotel_id=hotel_id, service_coupon_id=coupon['ServiceCoupon']['id']) }}">View</a>
+                <a href="{{ url_for('.service_coupons_edit', hotel_id=hotel_id, service_coupon_id=coupon['ServiceCoupon']['id']) }}">Edit</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

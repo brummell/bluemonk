@@ -1,0 +1,38 @@
+{% import 'elements/form_errors.html' as formErrors %}
+<h2>Technicians</h2>
+<div class="well span4">
+    <form method="POST" action="{{ url_for('.technicians_add', hotel_id=hotel_id) }}">
+        <fieldset>
+            <legend>New Technician</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                {{ form.name.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.name }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.login.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.login }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.password.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.password }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.active.label(class='control-label')}}
+                <div class="controls">
+                    {{ form.active}}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Create</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

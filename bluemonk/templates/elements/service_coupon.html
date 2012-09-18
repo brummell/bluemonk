@@ -1,0 +1,19 @@
+{% macro display(hotel_id, serviceCoupon) %}
+<h3><a href="{{ url_for('.service_coupons_view', hotel_id=hotel_id, service_coupon_id=serviceCoupon['id']) }}">{{ serviceCoupon['code'] }}</a></h3>
+<dl>
+    <dt>Code</dt>
+    <dd>{{ serviceCoupon['code'] }}</dd>
+    <dt>Description</dt>
+    <dd>{{ serviceCoupon['description'] }}</dd>
+    <dt>Discount</dt>
+    <dd>{{ serviceCoupon['discount'] }}</dd>
+    <dt>Active</dt>
+    <dd>{{ serviceCoupon['discount'] | bool_to_badge }}</dd>
+    <dt>Created</dt>
+    <dd>{{ serviceCoupon['created'] }}</dd>
+    <dt>Starts</dt>
+    <dd>{{ serviceCoupon['starts'] }}</dd>
+    <dt>Expires</dt>
+    <dd>{{ serviceCoupon['expires'] }}</dd>
+</dl>
+{% endmacro %}

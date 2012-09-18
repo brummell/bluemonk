@@ -1,0 +1,8 @@
+{% extends "admin/hotel/layout.html" %}
+{% import 'elements/paginator.html' as paginationHelper %}
+{% block title %}{{ hotel.name }} - Service Coupons{% endblock %}
+{% block body %}
+    <a href="{{ url_for('.service_coupons_add', hotel_id=hotel_id) }}">Create a new coupon</a>
+    {% include "partials/service_coupons/index.html" %}
+{{ paginationHelper.render_pagination(paginator) }}
+{% endblock %}

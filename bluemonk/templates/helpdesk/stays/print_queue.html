@@ -1,0 +1,29 @@
+{% extends "helpdesk/layout.html" %}
+
+{% import 'elements/printqueue.html' as printQueueElement %}
+
+{% block title %}{{ hotel.shorthand }} Print Queue{% endblock %}
+{% block body %}
+<table>
+    <thead>
+        <tr>
+            <th>Created</th>
+            <th>Name</th>
+            <th>Printed</th>
+            <th>Print Count</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for printjob in stay['StayPrintjob'] %}
+            <tr>
+                <td>{{ printjob['created'] }}</td>
+                <td>{{ printjob['title'] }}</td>
+                <td>{{ printjob['printed'] }}</td>
+                <td>{{ printjob['print_count'] }}</td>
+                <td>{{ printQueueElement.actions(forms[printjob['id']]) }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

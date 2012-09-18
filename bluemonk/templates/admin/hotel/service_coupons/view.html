@@ -1,0 +1,6 @@
+{% extends "admin/hotel/layout.html" %}
+{% block title %}{{ hotel.name }} - Service Coupon - {{ serviceCoupon['ServiceCoupon']['code'] }}{% endblock %}
+{% block body %}
+{% include "partials/service_coupons/view.html" %}
+{% endblock %}
+

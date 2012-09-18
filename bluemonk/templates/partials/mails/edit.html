@@ -1,0 +1,38 @@
+{% import 'elements/form_errors.html' as formErrors %}
+<h2>Mails</h2>
+<div class="well span4">
+    <form method="POST" action="{{ url_for('.mails_add', hotel_id=hotel_id) }}">
+        <fieldset>
+            <legend>New Mail</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                {{ form.sender.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.sender }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.subject.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.subject }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.important.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.important }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.content.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.content }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Save Changes</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

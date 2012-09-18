@@ -1,0 +1,15 @@
+{% extends "helpdesk/stays/index.html" %}
+{% block title %}{{ hotel.shorthand }} Current Groups{% endblock %}
+{% block body %}
+<dl>
+    <dd>
+        <dl>
+            {% for k in group['Group'] %}
+                <dt>{{ k }}</dt>
+                <dd>{{ group['Group'][k] }}</dd>
+            {% endfor %}
+        </dl>
+    </dd>
+</dl>
+{{ super() }}
+{% endblock %}

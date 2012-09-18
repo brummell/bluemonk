@@ -1,0 +1,27 @@
+<h2>Room Classes</h2>
+
+<a href="{{ url_for('.room_classes_add', hotel_id=hotel_id) }}">Create a new room class</a>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Billing Enabled</th>
+            <th>Always Authorized</th>
+            <th>Screensaver Enabled</th>
+            <th>Printer Configuration</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for roomClass in roomClasses %}
+        <tr>
+            <td>{{ roomClass['RoomClass']['name'] }}</td>
+            <td>{{ roomClass['RoomClass']['billing_enabled'] | bool_to_badge }}</td>
+            <td>{{ roomClass['RoomClass']['is_always_authorized'] | bool_to_badge }}</td>
+            <td>{{ roomClass['RoomClass']['screensaver_enabled'] | bool_to_badge }}</td>
+            <td>{{ printerConfigurations.get(roomClass['RoomClass']['printer_configuration_id'], '') }}</td>
+            <td><a href="{{ url_for('.room_classes_edit', hotel_id=hotel_id, room_class_id=roomClass['RoomClass']['id']) }}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

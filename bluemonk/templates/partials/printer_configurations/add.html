@@ -1,0 +1,32 @@
+{% import 'elements/form_errors.html' as formErrors %}
+<h2>Printer Configurations</h2>
+<div class="well span4">
+    <form class="form-horizontal" method="POST" action="{{ url_for('.printer_configurations_add', hotel_id=hotel_id) }}">
+        <fieldset>
+            <legend>New Printer configuration</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                {{ form.name.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.name }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.configuration.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.configuration }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.description.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.description }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Create</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+{% extends "admin/layout.html" %}
+{% block title %}{{ hotel.name | safe }}{% endblock %}
+{% block body %}
+<ul>
+    <li><a href="{{ url_for('.hotels_edit', hotel_id=hotel.id) }}">Edit</a></li>
+</ul>
+<form action="{{ url_for('.hotels_delete', hotel_id=hotel.id) }}" method="POST">
+    {{ form.csrf_token }}
+    {{ form.id }}
+    {{ form.delete }}
+</form>
+<dl>
+    <dt>Name</dt>
+    <dd>{{ hotel.name }}</dd>
+    <dt>Shorthand</dt>
+    <dd>{{ hotel.shorthand }}</dd>
+    <dt>Butterfly URL</dt>
+    <dd>{{ hotel.butterfly_url }}</dd>
+    <dt>Butterfly user</dt>
+    <dd>{{ hotel.butterfly_user }}</dd>
+    <dt>Butterfly token</dt>
+    <dd>{{ hotel.butterfly_token }}</dd>
+    <dt>CUPS Url</dt>
+    <dd>{{ hotel.cups_url }}</dd>
+</dl>
+{% endblock %}

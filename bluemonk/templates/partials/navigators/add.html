@@ -1,0 +1,32 @@
+{% import 'elements/form_errors.html' as formErrors %}
+<h2>Navigators</h2>
+<div class="well span4">
+    <form method="POST" action="{{ url_for('.navigators_add', hotel_id=hotel_id) }}">
+        <fieldset>
+            <legend>New Navigator</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                {{ form.id.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.id }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.billing_enabled.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.billing_enabled }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.authorized_boot.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.authorized_boot }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Register</button>
+            </div>
+        </fieldset>
+    </form>
+</div>

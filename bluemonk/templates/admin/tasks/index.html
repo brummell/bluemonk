@@ -1,0 +1,19 @@
+<ul>
+    <li><a href="{{ url_for('.ping') }}">Ping Workers</a></li>
+    <li><a href="{{ url_for('.reload') }}">Reload workers</a></li>
+</ul>
+{% for worker in scheduled %}
+<h2>{{ worker }}</h2>
+<h5>Active</h5>
+<ul>
+    {% for task in active[worker] %}
+    <li>{{ task }}</li>
+    {% endfor %}
+</ul>
+<h5>Scheduled</h5>
+<ul>
+    {% for task in scheduled[worker] %}
+    <li>{{task}}</li>
+    {% endfor %}
+</ul>
+{% endfor %}

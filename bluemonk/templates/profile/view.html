@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Your Profile{% endblock %}
+{% block body %}
+    <h1>{{ user.name }}'s Profile</h1>
+    <ul class="unstyled">
+        <li>Role: {{ roles.get(user.role, "New User") }}</li>
+        <li>Email: {{ user.email }}</li>
+        <li>Verified: {{ user.verified }}</li>
+        <li>Activated: {{ user.active }}</li>
+    </ul>
+</div>
+{% endblock %}

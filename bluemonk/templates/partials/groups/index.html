@@ -1,0 +1,17 @@
+<h2>Groups</h2>
+<table class='table table-condensed'>
+    <thead>
+        <tr>
+            <th>Group id</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for g in groups %}
+        <tr>
+            <td><a href="{{ url_for('.groups_view', hotel_id=hotel_id, group_id=g['Group']['id'])}}">{{ g['Group']['id'] }}</a></td>
+            <td>{{ g['Group']['description'] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

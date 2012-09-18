@@ -1,0 +1,19 @@
+<h2>Service Groups</h2>
+
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sg in serviceGroups %}
+        <tr>
+            <td><a href="{{ url_for('.service_groups_view', hotel_id=hotel_id, service_group_id=sg['ServiceGroup']['id'])}}">{{ sg['ServiceGroup']['name'] }}</a></td>
+            <td>{{ sg['ServiceGroup']['description'] }}</td>
+            <td><a href="{{ url_for('.service_groups_edit', hotel_id=hotel_id, service_group_id=sg['ServiceGroup']['id'])}}">Edit</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

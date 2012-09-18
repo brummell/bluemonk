@@ -1,0 +1,31 @@
+{% extends "admin/layout.html" %}
+{% block title %}Hotels{% endblock %}
+{% block body %}
+<h1>Hotels</h1>
+    <a href="{{ url_for('.hotels_add') }}">Add a new hotel</a>
+<table id="table-hotels" class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Shorthand</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for hotel in hotels %}
+            <tr data-id="{{ hotel.id | escape }}" data-url="{{ url_for('.hotels_view', hotel_id=hotel.id) | escape}}">
+            <td>{{ hotel.name }}</td>
+            <td>{{ hotel.shorthand }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<script type="text/javascript">
+    $('#table-hotels tbody tr').click(function(e){
+        var url = $(this).data('url');
+        if (url === 'undefined') {
+            return;
+        }
+        window.location.href = url;
+    });
+</script>
+{% endblock %}

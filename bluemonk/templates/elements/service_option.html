@@ -1,0 +1,17 @@
+{% macro display(hotel_id, serviceOption) %}
+<h3><a href="{{ url_for('.service_options_view', hotel_id=hotel_id, service_option_id=serviceOption['id']) }}">Service Option</a></h3>
+<dl>
+    <dt>Name</dt>
+    <dd>{{ serviceOption['name'] }}</dd>
+    <dt>Description</dt>
+    <dd>{{ serviceOption['description'] }}</dd>
+    <dt>Price</dt>
+    <dd>{{ serviceOption['price'] | money_to_string }}</dd>
+    <dt>Active</dt>
+    <dd>{{ serviceOption['active'] | bool_to_badge }}</dd>
+    <dt>Credit Only</dt>
+    <dd>{{ serviceOption['credit_only'] }}</dd>
+    <dt>Duration</dt>
+    <dd>{{ serviceOption['duration'] }} minutes</dd>
+</dl>
+{% endmacro %}

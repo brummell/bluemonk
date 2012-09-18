@@ -1,0 +1,27 @@
+{% import 'elements/form_errors.html' as formErrors %}
+<h2>Groups</h2>
+<div class="well span4">
+    <form class="form form-horizontal" method="POST" action="{{ url_for('.groups_edit', hotel_id=hotel_id, group_id=form.id.data) }}">
+        <fieldset>
+            <legend>Editing Group {{ form.id.data }}</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                {{ form.id.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.id }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.description.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.description }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Save Changes</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+

@@ -1,0 +1,15 @@
+import guests_facade
+import groups_facade
+import mails_facade
+import navigators_facade
+import passport_accounts_facade
+import printer_configurations_facade
+import rooms_facade
+import room_classes_facade
+import service_coupons_facade
+import service_groups_facade
+import service_options_facade
+import service_purchases_facade
+import stays_facade
+import stay_printjobs_facade
+import technicians_facade

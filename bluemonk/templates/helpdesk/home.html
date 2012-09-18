@@ -1,0 +1,10 @@
+{% extends "helpdesk/layout.html" %}
+{% block title %}Helpdesk Home{% endblock %}
+{% block body %}
+<h1>Select an hotel</h1>
+<ul>
+    {% for hotel in hotels %}
+        <li><a href="{{ url_for('.search', hotel_id=hotel.id) }}">{{ hotel.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

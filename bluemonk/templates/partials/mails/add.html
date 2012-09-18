@@ -1,0 +1,84 @@
+{% import 'elements/form_errors.html' as formErrors %}
+<h2>Mails</h2>
+<div class="well span4">
+    <form method="POST" action="{{ url_for('.mails_add', hotel_id=hotel_id) }}">
+        <fieldset>
+            <legend>New Mail</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                {{ form.sender.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.sender }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.subject.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.subject }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.important.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.important }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.recipients.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.recipients }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.content.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.content }}
+                </div>
+            </div>
+            <div class="control-group" id="mail-groups">
+                {{ form.groups.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.groups }}
+                </div>
+            </div>
+            <div class="control-group" id='mail-floors'>
+                {{ form.floors.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.floors }}
+                </div>
+            </div>
+            <div class="control-group" id='mail-rooms'>
+                {{ form.rooms.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.rooms }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Create</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript">
+    function update_recipients() {
+        $('div#mail-floors').hide();
+        $('div#mail-rooms').hide();
+        $('div#mail-groups').hide();
+        switch($('select#recipients').val()) {
+        case 'groups':
+            $('div#mail-groups').show();
+            break;
+        case 'floors':
+            $('div#mail-floors').show();
+            break;
+        case 'rooms':
+            $('div#mail-rooms').show();
+            break;
+        }
+    }
+    update_recipients();
+    $('select#recipients').change(function(){
+        update_recipients();
+    });
+</script>

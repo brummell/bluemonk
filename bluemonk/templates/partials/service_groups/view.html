@@ -1,0 +1,37 @@
+{% import 'elements/service_group.html' as serviceGroupElement %}
+{% import 'elements/service_coupon.html' as serviceCouponElement %}
+<h2>Service Groups</h2>
+<h4>Details for {{ serviceGroup['ServiceGroup']['name'] }}</h4>
+<div>
+    {{ serviceGroupElement.display(hotel_id, serviceGroup['ServiceGroup']) }}
+</div>
+<dl>
+    <dt>Service Coupons</dt>
+    <dd>
+        <dl>
+            {% for sc in serviceGroup['ServiceCoupon'] %}
+            <div>
+                {{ serviceCouponElement.display(hotel_id, sc) }}
+            </div>
+            {% endfor %}
+        </dl>
+    </dd>
+</dl>
+<dl>
+    <dt>Service Options</dt>
+    <dd>
+        <dl>
+            {% for so in serviceGroup['ServiceOption'] %}
+                <dt><a href="{{ url_for('.service_options_view', hotel_id=hotel_id, service_option_id=so['id']) }}">{{ so['name'] }}</a></dt>
+                <dd>
+                    <dl>
+                        {% for k in so %}
+                            <dt>{{ k }}</dt>
+                            <dd>{{ so[k] }}</dd>
+                        {% endfor %}
+                    </dl>
+                </dd>
+            {% endfor %}
+        </dl>
+    </dd>
+</dl>

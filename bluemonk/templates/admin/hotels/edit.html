@@ -1,0 +1,66 @@
+{% extends "admin/layout.html" %}
+{% import 'elements/form_errors.html' as formErrors %}
+{% block title %}Hotel {{ hotel.name | safe }}{% endblock %}
+{% block body %}
+<h2>Hotels</h2>
+<div class="well span4">
+    <form class="form form-horizontal" method="POST" action="{{ url_for('.hotels_edit', hotel_id=hotel.id) }}">
+        <fieldset>
+            <legend>Editing {{ form.name.data }}</legend>
+            {{ formErrors.display(form) }}
+            {{ form.csrf_token }}
+            <div class="control-group">
+                {{ form.id.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.id }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.name.label(class='control-label') }}
+                <div class="controls">
+                    {{ form.name }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.shorthand.label(class='control-label')  }}
+                <div class="controls">
+                    {{ form.shorthand }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.butterfly_url.label(class='control-label')  }}
+                <div class="controls">
+                    {{ form.butterfly_url }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.butterfly_user.label(class='control-label')  }}
+                <div class="controls">
+                    {{ form.butterfly_user }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.butterfly_token.label(class='control-label')  }}
+                <div class="controls">
+                    {{ form.butterfly_token }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.cups_address.label(class='control-label')  }}
+                <div class="controls">
+                    {{ form.cups_address }}
+                </div>
+            </div>
+            <div class="control-group">
+                {{ form.cups_password.label(class='control-label')  }}
+                <div class="controls">
+                    {{ form.cups_password }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Save Changes</button>
+            </div>
+        </fieldset>
+    </div>
+</form>
+{% endblock %}

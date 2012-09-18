@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+{% block title %}First login{% endblock %}
+{% block body %}
+<h2>This is your first login.</h2>
+<div class="well span4">
+    <p>
+      This is your first login on this website.  You are about to sign
+      in with the following OpenID: <a href="{{ openid }}">{{ openid|display_openid }}</a>
+    </p>
+    <p>
+        <strong>
+            Before you can use this site, your account will need to be activated.
+        </strong>
+    </p>
+    <form class="form-horizontal" action="{{ url_for('authentication.first_login') }}" method="post">
+        <fieldset>
+            <div class="control-group">
+                <label for="name">Please verify your name:</label>
+                <div class="controls">
+                    <input id="name" type="text" name="name" value="{{ request.values.name }}" />
+                </div>
+            </div>
+            <div class="form-actions">
+                <input type="hidden" name="next" value="{{ next }}">
+                <input class="btn btn-primary" type="submit" value="Continue" />
+                <input class="btn btn-inverse" type="submit" name="cancel" value="Cancel" />
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

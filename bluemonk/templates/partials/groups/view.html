@@ -1,0 +1,37 @@
+{% import 'elements/paginator.html' as paginationHelper %}
+{% import 'elements/pms_group.html' as pmsGroupHelper %}
+<h1>Groups</h1>
+<h3>Details for {{ group['Group']['id'] }}</h3>
+<p>{{ group['Group']['description'] }}</p>
+<h4>PMS Groups</h4>
+<a href="{{ url_for('.groups_add_pms_group', hotel_id=hotel_id, group_id=group['Group']['id']) }}">Link a PMS Group</a>
+<ul>
+    {% for pmsGroup in group['PmsGroup'] %}
+    <li>
+    {{ pmsGroup['pms_group'] }}
+    {{ pmsGroupHelper.delete(deleteForms[pmsGroup['id']], hotel_id, pmsGroup['group_id']) }}
+    </li>
+    {% endfor %}
+</ul>
+<h4>Stays</h4>
+<div>
+    <strong># of stays: {{ stays_count }}</strong>
+    <table class="table table-condensed">
+        <thead>
+            <tr>
+                <th>PMS Group</th>
+                <th>Room</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stay in stays %}
+            <tr>
+                <td>{{ stay['Stay']['pms_group'] }}</td>
+                <td>{{ stay['Room']['room_number'] }}</td>
+                <td><a href="{{ url_for('.stays_view', hotel_id=hotel_id, stay_id=stay['Stay']['id']) }}">View</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{{ paginationHelper.render_pagination(paginator) }}

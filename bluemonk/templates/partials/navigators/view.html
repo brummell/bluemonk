@@ -1,0 +1,14 @@
+{% import 'elements/navigator.html' as navigatorElement %}
+{% import 'elements/room.html' as roomElement %}
+<h2>Navigators - Details for {{ navigator['Navigator']['id'] }}</h2>
+<div class="span3">
+    {{ navigatorElement.display(hotel_id, navigator['Navigator']) }}
+</div>
+<div class="span3">
+    {{ roomElement.display(hotel_id, navigator['Room']) }}
+</div>
+<div class="span3">
+    {{ navigatorElement.room_move(hotel_id, room_move_form) }}
+</div>
+
+

@@ -1,0 +1,27 @@
+{% macro display(hotel_id, room, printerConfiguration, roomClass) %}
+<h3>Room</h3>
+<dl>
+    <dt>Number</dt>
+    <dd>{{ room['room_number'] }}</dd>
+    <dt>Floor</dt>
+    <dd>{{ room['floor'] }}</dd>
+    <dt>Navigator</dt>
+    <dd>{{ room['navigator_id'] }}</dd>
+    <dt>VOIP User</dt>
+    <dd>{{ room['voip_user'] }}</dd>
+    <dt>VOIP Password</dt>
+    <dd>{{ room['voip_password'] }}</dd>
+    <dt>Room Class</dt>
+    <dd>
+        {% if roomClass %}
+            {{ roomClass['name']}}
+        {% endif %}
+    </dd>
+    <dt>Printer Configuration</dt>
+    <dd>
+        {% if printerConfiguration %}
+            {{ printerConfiguration['name'] }}
+        {% endif %}
+    </dd>
+</dl>
+{% endmacro %}

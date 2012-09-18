@@ -1,0 +1,8 @@
+<html>
+    <body>
+        <h1>Welcome to Bluemonk!</h1>
+        <p>Your identity has been registered with bluemonk.</p>
+        <p>You will need to verify your email address. Once verified, your account will be activated by an administrator.</p>
+        <p><a href="{{ url_for('authentication.verify_address', _external=True, user_id=user_id, token=verification_token) }}" target="_BLANK">Verify your email address</a></p>
+    </body>
+</html>

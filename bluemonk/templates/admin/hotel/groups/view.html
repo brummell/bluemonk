@@ -1,0 +1,5 @@
+{% extends "admin/hotel/layout.html" %}
+{% block title %}{{ hotel.shorthand }} - Group {{ group['Group']['id'] }}{% endblock %}
+{% block body %}
+    {% include "partials/groups/view.html" %}
+{% endblock %}

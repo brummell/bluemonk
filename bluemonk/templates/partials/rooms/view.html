@@ -1,0 +1,5 @@
+{% import 'elements/room.html' as roomElement %}
+<h2>Room</h2>
+<div class="span3">
+    {{ roomElement.display(hotel_id, room['Room'], printerConfiguration['PrinterConfiguration'], roomClass['RoomClass']) }}
+</div><a href="{{ url_for('.rooms_edit', hotel_id=hotel_id, room_id=room['Room']['id']) }}">Edit</a>

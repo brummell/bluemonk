@@ -1,0 +1,37 @@
+{% import 'elements/stay.html' as stayElement %}
+<h2>Stay - Purchases</h2>
+{% if 'PassportAccount' in stay %}
+{% import 'elements/passport_account.html' as passportAccountElement %}
+    <div class="span3">
+        {{ passportAccountElement.display(stay['PassportAccount']) }}
+    </div>
+{% endif %}
+<div class="span3">
+    {{ stayElement.display(stay['Stay']) }}
+</div>
+<div class="span12">
+    <a href="{{ url_for('.stays_add_purchase', hotel_id=hotel_id, stay_id=stay['Stay']['id']) }}">Add a purchase</a>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Service Group</th>
+            <th>Service Option</th>
+            <th>Purchased on</th>
+            <th>Starts</th>
+            <th>Ends</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for p in purchases['Purchases'] %}
+        <tr>
+            <td><a href="{{ url_for('.service_groups_view', hotel_id=hotel_id, service_group_id=p['ServiceOption']['service_group_id']) }}">{{ serviceGroups[p['ServiceOption']['service_group_id']] }}</a></td>
+            <td><a href="{{ url_for('.service_options_view', hotel_id=hotel_id, service_option_id=p['ServiceOption']['id']) }}">{{ p['ServiceOption']['name'] }}</a></td>
+            <td>{{ p['ServicePurchase']['created'] }}</td>
+            <td>{{ p['ServicePurchase']['starts'] }}</td>
+            <td>{{ p['ServicePurchase']['ends'] }}</td>
+            <td>{{ p['ServicePurchase']['service_payment_id'] }}</td>
+    {% endfor %}
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,13 @@
+sqlalchemy
+redis
+Flask
+Flask-OpenID
+Flask-Principal
+Flask-WTF
+Flask-Gravatar
+Flask-Mail
+urllib3
+pycountry
+python-dateutil==1.5
+celery-with-redis
+pycups

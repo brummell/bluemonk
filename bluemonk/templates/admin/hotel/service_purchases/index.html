@@ -1,0 +1,7 @@
+{% extends "admin/hotel/layout.html" %}
+{% import 'elements/paginator.html' as paginationHelper %}
+{% block title %}{{ hotel.name }} - Service Purchases{% endblock %}
+{% block body %}
+    {% include "partials/service_purchases/index.html" %}
+{{ paginationHelper.render_pagination(paginator) }}
+{% endblock %}

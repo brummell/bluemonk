@@ -1,0 +1,45 @@
+{% extends "admin/layout.html" %}
+{% import 'elements/form_errors.html' as formErrors %}
+{% block title %}Users{% endblock %}
+{% block body %}
+<h2>Users</h2>
+<div class="well span4">
+    <form class="form-horizontal" method="POST" action="{{ url_for('.users_edit', user_id=user.id) }}">
+        <fieldset>
+            <legend>Editing {{ user_form.name.data }}</legend>
+            {{ formErrors.display(user_form) }}
+            {{ user_form.csrf_token }}
+            <div class="control-groups">
+                {{ user_form.name.label(class="control-label") }}
+                <div class="controls">
+                    {{ user_form.name }}
+                </div>
+            </div>
+            <div class="control-groups">
+                {{ user_form.role.label(class="control-label") }}
+                <div class="controls">
+                    {{ user_form.role }}
+                </div>
+            </div>
+            <div class="control-groups">
+                {{ user_form.active.label(class="control-label") }}
+                <div class="controls">
+                    {{ user_form.active }}
+                </div>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-primary" type="submit">Update</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div class="well span4">
+    <form class="form-horizontal" method="POST" action="{{ url_for('.users_send_verification', user_id=user.id) }}">
+        <fieldset>
+            <legend>Email Verification</legend>
+            {{ verification_form.csrf_token }}
+            {{ verification_form.send(class="btn btn-warning") }}
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

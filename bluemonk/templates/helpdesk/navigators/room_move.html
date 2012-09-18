@@ -1,0 +1,7 @@
+{% extends "helpdesk/layout.html" %}
+{% import 'elements/navigator.html' as navigatorElement %}
+
+{% block title %}{{ hotel.shorthand }} Navigator {{ navigator['Navigator']['id'] }}{% endblock %}
+{% block body %}
+    {% include "partials/navigators/room_move.html" %}
+{% endblock %}

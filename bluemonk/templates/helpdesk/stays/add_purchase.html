@@ -1,0 +1,6 @@
+{% extends "helpdesk/layout.html" %}
+{% block title %}{{ hotel.shorthand }} - {{ stay['Room']['room_number'] }} - Add Purchase{% endblock %}
+{% block body %}
+    {% include "partials/stays/add_purchase.html" %}
+{% endblock %}
+

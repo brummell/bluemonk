@@ -1,0 +1,74 @@
+
+{% macro display(stay, hotel_id) %}
+<h3>Stay</h3>
+<dl>
+    <dt>PMS Group</dt>
+    <dd>{{ stay['pms_group'] }}</dd>
+    <dt>Check In</dt>
+    <dd>{{ stay['pms_ci'] }}</dd>
+    <dt>Check Out</dt>
+    <dd>{{ stay['pms_co'] }}</dd>
+    <dt>Expected Check Out</dt>
+    <dd>{{ stay['expected_co'] }}</dd>
+    <dt>Welcomed</dt>
+    <dd>
+      <div class="btn-group" data-toggle="buttons-radio">
+        {% if  stay['welcomed'] %}
+        <button type="button" class="btn active welcomed" data-url="{{ url_for('.stay_controls', hotel_id=hotel_id, stay_id=stay['id']) | escape}}" data-key="welcomed" data-val="true">True</button>
+        <button type="button" class="btn welcomed" data-url="{{ url_for('.stay_controls', hotel_id=hotel_id, stay_id=stay['id']) | escape}}" data-key="welcomed" data-val="false">False</button>
+        {% else %}
+        <button type="button" class="btn welcomed" data-url="{{ url_for('.stay_controls', hotel_id=hotel_id, stay_id=stay['id']) | escape}}" data-key="welcomed" data-val="true">True</button>
+        <button type="button" class="btn active welcomed" data-url="{{ url_for('.stay_controls', hotel_id=hotel_id, stay_id=stay['id']) | escape}}" data-key="welcomed" data-val="false">False</button>
+        {% endif %}
+      </div>
+
+    </dd>
+    <dt>Cash Only</dt>
+    <dd>
+    <div class="btn-group" data-toggle="buttons-radio">
+{% if  stay['cash_only'] %}
+      <button type="button" class="btn active cashonly" data-url="{{ url_for('.stay_controls', hotel_id=hotel_id, stay_id=stay['id']) | escape}}" data-key="cash_only" data-val="true">True</button>
+      <button type="button" class="btn cashonly" data-url="{{ url_for('.stay_controls', hotel_id=hotel_id, stay_id=stay['id']) | escape}}" data-key="cash_only" data-val="false">False</button>
+{% else %}
+      <button type="button" class="btn cashonly" data-url="{{ url_for('.stay_controls', hotel_id=hotel_id, stay_id=stay['id']) | escape}}" data-key="cash_only" data-val="true">True</button>
+      <button type="button" class="btn active cashonly" data-url="{{ url_for('.stay_controls', hotel_id=hotel_id, stay_id=stay['id']) | escape}}" data-key="cash_only"data-val="false">False</button>
+{% endif %}
+    </div>
+    </dd>
+    <dt>Printing PIN</dt>
+    <dd>{{ stay['printing_pin'] }}</dd>
+</dl>
+<script type="text/javascript">
+
+  function ajax_update(e){
+        if ($(this).hasClass('active'))
+                return 0;
+
+        var url = $(this).data('url');
+        var key = $(this).data('key');
+        var val = JSON.parse($(this).data('val'));
+        var data = {};
+        data[key] = val;
+        if (url === 'undefined') {
+            return;
+        }
+        $.ajax({
+			url: url,
+                             type: 'POST',
+                             context: this,
+                             data: data
+  })
+		.done(function(data) {                    
+
+		})
+		.error(function(data) {
+                       alert('Could not update the setting');
+                });
+
+  }
+    $('button.cashonly').click(ajax_update);
+    $('button.welcomed').click(ajax_update);
+</script>
+{% endmacro %}
+
+

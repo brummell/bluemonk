@@ -1,0 +1,43 @@
+{% extends "admin/hotel/layout.html" %}
+{% block title %}{{ hotel.name }}{% endblock %}
+{% block body %}
+<div>
+    <h3>Guests Management</h3>
+    <ul class='unstyled'>
+        <li><a href="{{ url_for('.groups_index', hotel_id=hotel.id) }}">Groups</a></li>
+        <li><a href="{{ url_for('.stays_index', hotel_id=hotel.id) }}">Stays</a></li>
+    </ul>
+</div>
+<div>
+    <h3>Rooms Management</h3>
+    <ul class="unstyled">
+        <li><a href="{{ url_for('.rooms_index', hotel_id=hotel_id) }}">Rooms</a></li>
+        <li><a href="{{ url_for('.room_classes_index', hotel_id=hotel_id) }}">Classes</a></li>
+    </ul>
+</div>
+<div>
+    <h3>Printers Management</h3>
+    <ul class='unstyled'>
+        <li><a href="{{ url_for('.printers_index', hotel_id=hotel.id) }}">Printers</a></li>
+        <li><a href="{{ url_for('.printer_configurations_index', hotel_id=hotel.id) }}">Configurations</a></li>
+        <li><a href="{{ url_for('.print_jobs_index', hotel_id=hotel.id) }}">Jobs</a></li>
+        <li><a href="{{ url_for('.printers_jobs', hotel_id=hotel.id) }}">Print Jobs Queue</a></li>
+    </ul>
+</div>
+<div>
+    <h3>Services Management</h3>
+    <ul class='unstyled'>
+        <li><a href="{{ url_for('.service_groups_index', hotel_id=hotel.id) }}">Services</a></li>
+        <li><a href="{{ url_for('.service_bundles_index', hotel_id=hotel.id) }}">Bundles</a></li>
+        <li><a href="{{ url_for('.service_options_index', hotel_id=hotel.id) }}">Options</a></li>
+        <li><a href="{{ url_for('.service_coupons_index', hotel_id=hotel.id) }}">Coupons</a></li>
+        <li><a href="{{ url_for('.service_purchases_index', hotel_id=hotel_id) }}">Purchases</a></li>
+    </ul>
+</div>
+<div>
+    <h3>Technicians</h3>
+    <ul class='unstyled'>
+        <li><a href="{{ url_for('.technicians_index', hotel_id=hotel.id) }}">Technicians</a></li>
+    </ul>
+</div>
+{% endblock %}

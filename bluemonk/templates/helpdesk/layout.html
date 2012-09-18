@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block top %}
+<ul class="nav">
+    <li class="divider-vertical"></li>
+    {% if hotel %}
+        <li class="navbar-text">{{ hotel.name }}</li>
+    {% endif %}
+    <li class="divider-vertical"></li>
+</ul>
+{% endblock %}
+{% block menu %}
+<ul class="nav nav-list">
+    <li><a href="{{ url_for('.home') }}"><i class="icon-home"></i> Home</a></li>
+    <li><a href="{{ url_for('profile.view') }}"><i class="icon-user"></i> Profile</a></li>
+    <li><a href="{{ url_for('authentication.logout') }}"><i class="icon-off"></i> Logout</a></li>
+</ul>
+{% endblock %}

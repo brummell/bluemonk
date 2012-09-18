@@ -1,0 +1,61 @@
+{% extends "admin/layout.html" %}
+{% block title %}Users{% endblock %}
+{% block body %}
+<h1>Users</h1>
+<table id="table-users" class="table table-condensed">
+    <thead>
+        <tr>
+            <th>OpenID Provider</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Active</th>
+            <th>Verified</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+            <tr id='user-{{user.id | escape }}' data-id="{{ user.id | escape }}" data-url="{{ url_for('.users_edit', user_id=user.id) | escape}}">
+            <td>{{ user.openid }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role_name }}</td>
+            <td>{{ user.active | bool_to_badge }}</td>
+            <td>{{ user.verified | bool_to_badge }}</td>
+            <td>
+                <a class="btn btn-primary" href="{{ url_for('.users_edit', user_id = user.id) }}">View</a>
+                <button type="button" class="btn btn-danger btn-user-delete" data-id="{{ user.id | escape }}">Delete</button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<form id="user-delete-form" action="{{ url_for('.users_delete') }}" method="post">
+    {{ form.csrf_token }}
+    <div style="display: none;">
+        {{ form.user_id(id='user-delete-form-id') }}
+    </div>
+</form>
+
+<script type="text/javascript">
+    $('button.btn-user-delete').click(function(e) {
+            var answer = null;
+            e.stopPropagation();
+
+            answer = confirm("Are you sure you want to delete this user ?");
+            if (!answer) {
+                return;
+            }
+            $('#user-delete-form-id').val($(this).data('id'));
+            $('#user-delete-form').submit();
+    });
+    $('#table-users tbody tr').click(function(e){
+        var url = $(this).data('url');
+        if (url === 'undefined') {
+            return;
+        }
+        window.location.href = url;
+    });
+</script>
+{% endblock %}

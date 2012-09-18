@@ -1,0 +1,11 @@
+{% extends "admin/layout.html" %}
+{% block title %}Users{% endblock %}
+{% block body %}
+    <h1>Administration Home</h1>
+    <h3>Hotels</h3>
+<ul class="unstyled">
+    {% for hotel in hotels %}
+        <li><a href="{{ url_for(".hotel_home", hotel_id=hotel.id)}}">{{ hotel.shorthand }} - {{ hotel.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}

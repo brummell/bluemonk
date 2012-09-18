@@ -1,0 +1,20 @@
+<h2>Rooms</h2>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Room Number</th>
+            <th>Floor</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for room in rooms %}
+            <tr>
+                <td>{{ room['Room']['room_number'] }}</td>
+                <td>{{ room['Room']['floor'] }}</td>
+                <td><a href="{{ url_for('.rooms_view', hotel_id=hotel_id, room_id=room['Room']['id']) }}">View</a></td>
+                <td><a href="{{ url_for('.rooms_edit', hotel_id=hotel_id, room_id=room['Room']['id']) }}">Edit</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

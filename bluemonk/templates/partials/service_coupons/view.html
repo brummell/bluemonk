@@ -1,0 +1,11 @@
+{% import 'elements/service_coupon.html' as serviceCouponElement %}
+{% import 'elements/service_group.html' as serviceGroupElement %}
+<h2>Service Coupons</h2>
+<h4>Details for {{ serviceCoupon['ServiceCoupon']['code'] }}</h4>
+<div class="span4">
+    {{ serviceGroupElement.display(hotel_id, serviceCoupon['ServiceGroup']) }}
+</div>
+<div class="span4">
+    {{ serviceCouponElement.display(hotel_id, serviceCoupon['ServiceCoupon']) }}
+</span>
+

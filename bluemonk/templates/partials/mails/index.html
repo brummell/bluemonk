@@ -1,0 +1,21 @@
+<h2>Mails</h2>
+<table class="table table-condensed">
+    <thead>
+        <tr>
+            <th>Created</th>
+            <th>Sender</th>
+            <th>Important</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for mail in mails %}
+            <tr>
+                <td>{{ mail['StayMessage']['created'] }}</td>
+                <td>{{ mail['StayMessage']['sender'] }}</td>
+                <td>{{ mail['StayMessage']['important'] }}</td>
+                <td>{{ mail['StayMessage']['content'] | to_excerpt }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

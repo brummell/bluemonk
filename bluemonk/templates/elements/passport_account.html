@@ -1,0 +1,9 @@
+{% macro display(passportAccount) %}
+<h3>Passport Account</h3>
+<dl>
+    <dt>Name</td>
+    <dd>{{ passportAccount | guest_name }}</dd>
+    <dt>Account Type</dt>
+    <dd>{{ passportAccount['type'] }}</dd>
+</dl>
+{% endmacro %}

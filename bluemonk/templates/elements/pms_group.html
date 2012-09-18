@@ -1,0 +1,7 @@
+{% macro delete(form, hotel_id, group_id) %}
+<form class="form-horizontal" method="POST" action="{{ url_for('.groups_remove_pms_group', hotel_id=hotel_id, group_id=group_id) }}">
+    {{ form.csrf_token }}
+    {{ form.pms_group }}
+    {{ form.delete(class="btn btn-danger") }}
+</form>
+{% endmacro %}

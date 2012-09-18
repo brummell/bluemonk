@@ -1,0 +1,18 @@
+Bluemonk is the new HCN hotel console system.
+
+It remotely access an hotel using the Butterfly API
+
+CONFIGURATION
+edit websiteconfig.py
+
+ISSUE REPORTING
+
+The configuration value USE_CELERY will determine if the issues are posted asynchronously or will block the response.
+Each backend support different configuration options.
+edit issue_[backend] where [backend] is either jira or redmine
+
+RUNNING
+use `python run.py` to launch a production build
+
+DEVELOPMENT
+use `python debug.py` to launch a debug build
